@@ -1,18 +1,24 @@
 {
-  "name": "",
+  "name": "GitPeek",
   "version": "1.0",
   "manifest_version": 2,
   "content_scripts": [{
       "matches": ["https://*/*","file://*","http://*/*"],
-      "js": ["js/contentscript.js", "js/DOM.js", "js/highlight.js"],
-      "css" : ["css/injectedstylesheet.css", "css/highlight.css"]
-  }],"browser_action": {
+      "js": ["js/api.js","js/contentscript.js", "js/DOM.js"],
+      "css" : ["css/injectedstylesheet.css"]
+  }],
+  "icons": {
+     "16":"images/icon-16.png",
+     "48":"images/icon-48.png",
+     "128":"images/icon-128.png"
+        },
+  "browser_action": {
     "default_popup": "popup.html"
   },"web_accessible_resources": ["popup.html"],
    "background": {
      "scripts": ["js/background.js"]
   },
-  "permissions": ["https://raw.githubusercontent.com/","storage","unlimitedStorage","tabs","activeTab"],
+  "permissions": ["https://raw.githubusercontent.com/*","storage","unlimitedStorage","tabs","activeTab"],
   "content_security_policy": "script-src 'self' https://*.googleapis.com/*; object-src 'self'",
   "web_accessible_resources": ["js/script.js"]
 }

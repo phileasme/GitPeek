@@ -97,20 +97,26 @@ function findElementFromPath(path) {
 if (document.addEventListener ) {
     document.addEventListener("click", function(event) {
         var targetElement = event.target || event.srcElement;
-        //Prints the entire arborescence
-				// fetch('https://raw.githubusercontent.com/isagalaev/highlight.js/master/src/languages/javascript.js')
-				// .then(function (response) { return response.text() })
-				// .then(function(html) { if (!GIT_PEEK_IS_OPEN) {openGitPeek('L5', html)} })
-				//
-				openGitPeek('L5', '')
-					});
+        console.log("get ID OF LINE" + getLastId(targetElement));
+        var textArray = gitpeek(findElementFromPath(getPath(targetElement)).innerText);
+				openGitPeek(getLastId(targetElement), textArray)
+	});
 } else if (document.attachEvent) {
     document.attachEvent("onclick", function() {
         var targetElement = event.target || event.srcElement;
     });
 }
+function getLastId(element){
+	var count = 5;
+	var currentElement = element;
+	while (--count > 0 ){
+		if (currentElement.getAttribute('id')){
+			return currentElement.getAttribute('id');
+		}
+		currentElement = currentElement.parentElement;
+	}
+}
 
-// Injecting script
 var s = document.createElement('script');
 s.src = chrome.extension.getURL('js/script.js');
 s.onload = function() {
