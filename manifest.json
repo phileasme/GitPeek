@@ -4,7 +4,7 @@
   "manifest_version": 2,
   "content_scripts": [{
       "matches": ["https://*/*","file://*","http://*/*"],
-      "js": ["js/contentscript.js"],
+      "js": ["js/api.js","js/contentscript.js"],
       "css" : ["css/injectedstylesheet.css"]
   }],
   "icons": { 
@@ -18,7 +18,7 @@
    "background": {
      "scripts": ["js/background.js"]
   },
-  "permissions": ["raw.githubusercontent.com/","storage","unlimitedStorage","tabs","activeTab"],
+  "permissions": ["https://raw.githubusercontent.com/*","storage","unlimitedStorage","tabs","activeTab"],
   "content_security_policy": "script-src 'self' https://*.googleapis.com/*; object-src 'self'",
   "web_accessible_resources": ["js/script.js"]
 }

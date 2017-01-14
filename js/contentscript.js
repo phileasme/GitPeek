@@ -97,9 +97,8 @@ function findElementFromPath(path) {
 if (document.addEventListener ) {
     document.addEventListener("click", function(event) {
         var targetElement = event.target || event.srcElement;
-        //Prints the entire arborescence
-        console.log(getPath(targetElement));
-        console.log(findElementFromPath(getPath(targetElement)).innerText);
+        console.log("get ID OF LINE" + getLastId(targetElement));
+        gitpeek(findElementFromPath(getPath(targetElement)).innerText);
 	}); 
 } else if (document.attachEvent) {    
     document.attachEvent("onclick", function() {
@@ -107,6 +106,16 @@ if (document.addEventListener ) {
     });
 }
 
+function getLastId(element){
+	var count = 5;
+	var currentElement = element;
+	while (--count > 0 ){
+		if (currentElement.getAttribute('id')){
+			return currentElement.getAttribute('id');
+		}
+		currentElement = currentElement.parentElement;
+	}
+}
 // Injecting script 
 var s = document.createElement('script');
 s.src = chrome.extension.getURL('js/script.js');
