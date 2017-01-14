@@ -1,0 +1,15 @@
+#gitPeek {
+    position: absolute;
+    z-index: 10;
+    top: -10px;
+    left: 100px;
+    padding: 10px;
+    border-radius: 10px;
+    /* display: none; */
+    background: white;
+    border: 2px solid black;
+  	width: 800px;
+  	height: 200px;
+  	max-height: 200px;
+  	overflow-x: hidden;
+}
