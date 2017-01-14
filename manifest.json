@@ -3,8 +3,8 @@
   "version": "1.0",
   "manifest_version": 2,
   "content_scripts": [{
-      "matches": ["https://*/*","file://*","http://*/*"],
-      "js": ["js/api.js","js/contentscript.js", "js/DOM.js"],
+      "matches": ["https://github.com/*/blob/*","http://github.com/*/blob/*"],
+      "js": ["js/api.js","js/highlight.js","js/contentscript.js", "js/DOM.js"],
       "css" : ["css/injectedstylesheet.css"]
   }],
   "icons": {
