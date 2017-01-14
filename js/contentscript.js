@@ -38,7 +38,7 @@ function inParentSameNodeName(node) {
    	num++;
    }
  }
- return num;	
+ return num;
 }
 // CSS Selector element finder ** Copyright by Phileas Hocquard **
 function findElementFromPath(path) {
@@ -57,7 +57,7 @@ function findElementFromPath(path) {
 						var currentSplitCounter = 0;
 						for(var i = 0; i<currentNodeList.length; i++) {
 							try {
-								if(/[a-zA-Z]+(:eq\(\d+\))/.test(arrayOfPath[mainIterator])) {  
+								if(/[a-zA-Z]+(:eq\(\d+\))/.test(arrayOfPath[mainIterator])) {
 									currentSplit = arrayOfPath[mainIterator].split(/(:eq\(|\))/);
 									currentSplit[2] = parseInt(currentSplit[2]);
 									if (currentNodeList[i]) {
@@ -98,16 +98,19 @@ if (document.addEventListener ) {
     document.addEventListener("click", function(event) {
         var targetElement = event.target || event.srcElement;
         //Prints the entire arborescence
-        console.log(getPath(targetElement));
-        console.log(findElementFromPath(getPath(targetElement)).innerText);
-	}); 
-} else if (document.attachEvent) {    
+				// fetch('https://raw.githubusercontent.com/isagalaev/highlight.js/master/src/languages/javascript.js')
+				// .then(function (response) { return response.text() })
+				// .then(function(html) { if (!GIT_PEEK_IS_OPEN) {openGitPeek('L5', html)} })
+				//
+				openGitPeek('L5', '')
+					});
+} else if (document.attachEvent) {
     document.attachEvent("onclick", function() {
         var targetElement = event.target || event.srcElement;
     });
 }
 
-// Injecting script 
+// Injecting script
 var s = document.createElement('script');
 s.src = chrome.extension.getURL('js/script.js');
 s.onload = function() {
@@ -115,3 +118,4 @@ s.onload = function() {
 };
 // Add event listener for whatever click on anchor element send to  backend process
 (document.head || document.documentElement).appendChild(s);
+

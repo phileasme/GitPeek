@@ -4,15 +4,15 @@
   "manifest_version": 2,
   "content_scripts": [{
       "matches": ["https://*/*","file://*","http://*/*"],
-      "js": ["js/contentscript.js"],
-      "css" : ["css/injectedstylesheet.css"]
+      "js": ["js/contentscript.js", "js/DOM.js", "js/highlight.js"],
+      "css" : ["css/injectedstylesheet.css", "css/highlight.css"]
   }],"browser_action": {
     "default_popup": "popup.html"
   },"web_accessible_resources": ["popup.html"],
    "background": {
      "scripts": ["js/background.js"]
   },
-  "permissions": ["raw.githubusercontent.com/","storage","unlimitedStorage","tabs","activeTab"],
+  "permissions": ["https://raw.githubusercontent.com/","storage","unlimitedStorage","tabs","activeTab"],
   "content_security_policy": "script-src 'self' https://*.googleapis.com/*; object-src 'self'",
   "web_accessible_resources": ["js/script.js"]
 }
