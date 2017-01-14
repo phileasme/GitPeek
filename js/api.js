@@ -1,9 +1,9 @@
 
 
 function gitpeek(path){
-var xhr = new XMLHttpRequest();
-var getLink = "";
-var currentPath = "https://raw.githubusercontent.com"+window.location.pathname+"/../";
+	var xhr = new XMLHttpRequest();
+	var getLink = "";
+	var currentPath = "https://raw.githubusercontent.com"+window.location.pathname+"/../";
 	if ( path.length > 0 && path != undefined){
 		if(/\.js$/.test(path)){
 			getLink = currentPath+path;
