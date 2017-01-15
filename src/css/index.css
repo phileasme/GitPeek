@@ -2,11 +2,11 @@
     position: absolute;
     padding: 10px;
     border-radius: 10px;
-    /* display: none; */
     background: white;
     border: 2px solid black;
+		z-index: 10;
   	width: 800px;
-  	height: 200px;
   	max-height: 200px;
   	overflow-x: hidden;
+		transform: translate(-110%, -50%);
 }
