@@ -4,8 +4,8 @@ function wrappedGitPeek(lastId) {
 	}
 }
 
-if (document.addEventListener ) {
-	document.addEventListener("click", function(event) {
+if (document.addEventListener) {
+	document.addEventListener('click', function(event) {
 		var targetElement = event.target || event.srcElement
 
 		var filePath  = getFilePath(targetElement.innerText)
@@ -18,31 +18,28 @@ function getFilePath(text) {
 	var contentURL = ""
 	var currentPath = GITHUB_CONTENT + window.location.pathname + '/../'
 
-	if (text.length > 0 && text != undefined){
-		if (/\.js$/.test(text)){
+	if (text.length > 0 && text != undefined) {
+		if (/\.js$/.test(text)) {
 			contentURL = currentPath + text
-		} else if (/^'.+'$/.test(text)) {
-			 text = text.replace(/'/g,'')
-			 if(/\.js$/.test(text)){
-				 contentURL = currentPath + text;
-			 }else{
-			  contentURL = currentPath + text + ".js"
+		} else if (/^('|").+('|")$/.test(text)) {
+			text = text.replace(/('|")/g,'')
+			if(/\.js$/.test(text)){
+				contentURL = currentPath + text
 			}
-		} else{
-			contentURL = currentPath + text + ".js"
 		}
-
-		return contentURL.replace(/\/blob/g,'')
+		if(!(/\.js$/.test(text))){
+			contentURL = currentPath + text + '.js'
+		}
+		return contentURL.replace(/\/blob/g,'');
 	}
 }
 
-function getLastId(element){
-	var count = 5;
-	var currentElement = element;
-	while (--count > 0 ){
-		if (currentElement.getAttribute('id')){
-			return currentElement.getAttribute('id');
+function getLastId(element) {
+	var count = 5
+	while (--count > 0) {
+		element = element.parentElement
+		if (element.getAttribute('id')) {
+			return element.getAttribute('id');
 		}
-		currentElement = currentElement.parentElement;
 	}
 }
