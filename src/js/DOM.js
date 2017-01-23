@@ -10,14 +10,16 @@ function openGitPeek(lineID, rawContent) {
 		code.className = 'javascript'
 		pre.appendChild(code)
 
-		popup.appendChild(code)
-
 		code.innerHTML = rawContent.join('</br>')
 
 		var codeLine = document.getElementById(lineID)
 		codeLine.parentNode.insertBefore(popup, codeLine.nextSibling)
 
 		hljs.highlightBlock(code)
+		
+		code.innerHTML = code.innerHTML.replace(/\@HighlighterJS_Replace_Forward_Slash\@/g, '/');
+
+		popup.appendChild(code)
 
 		document.addEventListener('click', closeGitPeek)
 		GIT_PEEK_IS_OPEN = true

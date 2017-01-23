@@ -12,7 +12,11 @@ function fetchFileContent(URL, cb) {
 				result = result.split('\n')
 				var result_length = result.length
 				for (var x = 0; x < result_length; x++) {
-				  result[x] = result[x].replace(/\s/g,'&nbsp;')
+				  	result[x] = result[x].replace(/\s/g,'&nbsp;')
+				  	/** Assuming the whole file is mean't to be in javascript **/
+				  	if(/\.js$/.test(URL)){
+				  		result[x] = result[x].replace(/\//g,'@HighlighterJS_Replace_Forward_Slash@')
+				  	}		 
 				}
 				cb(result);
 			} else {
