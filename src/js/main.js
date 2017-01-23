@@ -7,10 +7,12 @@ function wrappedGitPeek(lastId) {
 if (document.addEventListener) {
 	document.addEventListener('click', function(event) {
 		var targetElement = event.target || event.srcElement
-
-		var filePath  = getFilePath(targetElement.innerText)
-		var lastId = getLastId(targetElement)
-		fetchFileContent(filePath, wrappedGitPeek(lastId))
+		/** Assuming HTMLDocument paths objects are of class pl-s **/
+		if ([].slice.call(document.getElementsByClassName('pl-s')).includes(targetElement)){
+			var filePath  = getFilePath(targetElement.innerText)
+			var lastId = getLastId(targetElement)
+			fetchFileContent(filePath, wrappedGitPeek(lastId))
+		}
 	})
 }
 
